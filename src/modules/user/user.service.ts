@@ -32,6 +32,10 @@ class UserService {
       throw error;
     }
   }
+
+  async getUserById(userId: number) {
+    return this.userRepository.findUserById(userId);
+  }
 }
 
 export default UserService;

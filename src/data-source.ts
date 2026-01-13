@@ -9,7 +9,11 @@ export const AppDataSource = new DataSource({
   username: env.db.username,
   password: env.db.password,
   database: env.db.database,
-  entities: ["src/modules/**/entities/*.entity.ts"],
+  entities: [
+    process.env.NODE_ENV === "production"
+      ? "dist/modules/**/entities/*.entity.js"
+      : "src/modules/**/entities/*.entity.ts",
+  ],
   migrations: [],
   synchronize: true,
 });
